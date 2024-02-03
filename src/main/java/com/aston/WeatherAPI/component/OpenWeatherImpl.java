@@ -1,7 +1,9 @@
 package com.aston.WeatherAPI.component;
 
 import com.aston.WeatherAPI.entity.Weather;
-import com.aston.WeatherAPI.service.WeatherService;
+import com.aston.WeatherAPI.config.WeatherConfig;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class OpenWeatherImpl {
-    private final WeatherService weatherService;
+    private final WeatherConfig weatherConfig;
 
     @Value("${first.part.of.url}")
     private String firstPartOfUrl;
@@ -23,12 +25,11 @@ public class OpenWeatherImpl {
     @Value("${second.part.of.url}")
     private String secondPartOfUrl;
 
-    public List<Weather> getWetherInCity(String cityName){
+    public void getWeatherInCity(String cityName){
         String output = getUrlContent(urlConstructor(cityName));
         if(output != null){
-            return weatherService.getWeatherObjFromJSON(output, cityName);
+            weatherConfig.getWeatherObjFromJSON(output, cityName);
         }
-        return null;
     }
 
     private String urlConstructor(String cityName){
