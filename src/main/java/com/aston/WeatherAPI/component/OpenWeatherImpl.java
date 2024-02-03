@@ -26,8 +26,10 @@ public class OpenWeatherImpl {
     private String secondPartOfUrl;
 
     public void getWeatherInCity(String cityName){
+        System.out.println("Ссылка: " + urlConstructor(cityName));
         String output = getUrlContent(urlConstructor(cityName));
         if(output != null){
+            System.out.println(output);
             weatherConfig.getWeatherObjFromJSON(output, cityName);
         }
     }

@@ -6,8 +6,9 @@ import com.aston.WeatherAPI.repository.WeatherRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 public class WeatherConfig {
 
     private final WeatherRepository weatherRepository;
@@ -29,7 +30,7 @@ public class WeatherConfig {
 
     private Weather makeNewWeatherObject(int index,
                                       JSONObject jsonObject, String cityName){
-        JSONObject littleJSONObj = jsonObject.getJSONArray("weather")
+        JSONObject littleJSONObj = jsonObject.getJSONArray("list")
                 .getJSONObject(index);
 
         String date = weatherConverter.convertDate(littleJSONObj);

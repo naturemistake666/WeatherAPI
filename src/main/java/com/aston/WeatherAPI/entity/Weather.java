@@ -25,6 +25,7 @@ public class Weather {
 
     @Column(name = "temperature_now")
     private int temperatureNow;
+
     @Column(name = "temperature_min")
     private int temperatureMin;
 
@@ -55,5 +56,10 @@ public class Weather {
         this.pressure = pressure;
         this.windSpeed = windSpeed;
         this.humidity = humidity;
+    }
+
+    @Override
+    public String toString(){
+        return "Погода в " + town + " " + temperatureNow + " градусов";
     }
 }

@@ -13,5 +13,5 @@ public interface WeatherService {
 
     void deleteById(Long id);
 
-    Weather findByTown(String town);
+    List<Weather> findByTown(String town);
 }

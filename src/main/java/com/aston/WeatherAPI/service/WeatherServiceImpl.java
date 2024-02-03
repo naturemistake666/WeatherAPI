@@ -42,7 +42,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public Weather findByTown(String town) {
+    public List<Weather> findByTown(String town) {
         return weatherRepository.findByTown(town);
     }
 
