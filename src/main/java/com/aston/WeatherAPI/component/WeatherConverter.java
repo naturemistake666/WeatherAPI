@@ -12,7 +12,7 @@ import java.util.OptionalInt;
 public class WeatherConverter {
 
     public String convertDate(JSONObject littleJSONObj){
-        return substringTimeInDate(littleJSONObj.getString("dt_txt"));
+        return substringTimeInDate(littleJSONObj.getString("dt"));
     }
 
     public int convertTemperature(JSONObject littleJSONObj){
@@ -49,7 +49,7 @@ public class WeatherConverter {
     private int countMinOrMaxTemp(JSONObject bigJSONObj, int startIndex, String type){
         List<Integer> listOfTemps = new ArrayList<>();
         for(int i = startIndex; i < startIndex + 2; i++){
-            listOfTemps.add(convertToOurTemperature(bigJSONObj.getJSONArray("list")
+            listOfTemps.add(convertToOurTemperature(bigJSONObj.getJSONArray("weather")
                     .getJSONObject(i).getJSONObject("main").getDouble(type)));
         }
         OptionalDouble result = listOfTemps.stream().mapToInt(t -> t).average();

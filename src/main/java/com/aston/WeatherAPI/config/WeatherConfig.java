@@ -3,22 +3,21 @@ package com.aston.WeatherAPI.config;
 import com.aston.WeatherAPI.component.WeatherConverter;
 import com.aston.WeatherAPI.entity.Weather;
 import com.aston.WeatherAPI.repository.WeatherRepository;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
-@RequiredArgsConstructor
 public class WeatherConfig {
 
     private final WeatherRepository weatherRepository;
 
     private final WeatherConverter weatherConverter;
+    @Autowired
+    public WeatherConfig(WeatherRepository weatherRepository, WeatherConverter weatherConverter) {
+        this.weatherRepository = weatherRepository;
+        this.weatherConverter = weatherConverter;
+    }
 
     public void getWeatherObjFromJSON(String jsonWeather, String cityName){
         JSONObject jsonObject = new JSONObject(jsonWeather);
@@ -30,7 +29,7 @@ public class WeatherConfig {
 
     private Weather makeNewWeatherObject(int index,
                                       JSONObject jsonObject, String cityName){
-        JSONObject littleJSONObj = jsonObject.getJSONArray("list")
+        JSONObject littleJSONObj = jsonObject.getJSONArray("weather")
                 .getJSONObject(index);
 
         String date = weatherConverter.convertDate(littleJSONObj);

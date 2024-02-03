@@ -19,6 +19,7 @@ public class WeatherController {
 
     @GetMapping("/{town}")
     public String getWeather(@PathVariable("town") String town, Model model) {
+    weatherServiceImpl.saveWeather(town);
     model.addAttribute("weather", weatherServiceImpl.findByTown(town));
     return "exmpl.html";
     }
