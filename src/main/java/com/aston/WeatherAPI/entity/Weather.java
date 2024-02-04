@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "weather")
 public class Weather {
 
@@ -19,14 +20,11 @@ public class Weather {
     @Column(name = "town")
     private String town;
 
-    @Column(name = "date")
+    @Column(name = "date_")
     private String date;
 
     @Column(name = "temperature_now")
     private int temperatureNow;
-
-    @Column(name = "temperature_feels")
-    private int temperatureFeels;
 
     @Column(name = "temperature_min")
     private int temperatureMin;
@@ -37,11 +35,13 @@ public class Weather {
     @Column(name = "pressure")
     private int pressure;
 
-    @Column(name = "wind_speed")
-    private double windSpeed;
-
     @Column(name = "humidity")
     private int humidity;
+
+    @Column(name = "wind_speed")
+    private double windSpeed;
+    @Column(name = "temperature_feels")
+    private int temperatureFeels;
 
     public Weather(String town, String date, int temperatureNow,
                    int temperatureFeels, int temperatureMin,
@@ -56,5 +56,10 @@ public class Weather {
         this.pressure = pressure;
         this.windSpeed = windSpeed;
         this.humidity = humidity;
+    }
+
+    @Override
+    public String toString(){
+        return "Погода в " + town + " " + temperatureNow + " градусов";
     }
 }

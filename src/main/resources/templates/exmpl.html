@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>cityName</th>
+            <th>date</th>
+            <th>temperatureNow</th>
+            <th>temperatureMin</th>
+            <th>city.temperatureMax</th>
+            <th>pressure</th>
+            <th>windSpeed</th>
+            <th>humidity</th>
+        </tr>
+        <tr>
+            <td th:utext="${weather.id}"></td>
+            <td th:utext="${weather.town}"></td>
+            <td th:utext="${weather.date}"></td>
+            <td th:utext="${weather.temperatureNow}"></td>
+            <td th:utext="${weather.temperatureMin}"></td>
+            <td th:utext="${weather.temperatureMax}"></td>
+            <td th:utext="${weather.pressure}"></td>
+            <td th:utext="${weather.windSpeed}"></td>
+            <td th:utext="${weather.humidity}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
