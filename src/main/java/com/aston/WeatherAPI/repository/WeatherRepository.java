@@ -12,6 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface WeatherRepository extends JpaRepository<Weather, Long> {
-
+    @Query("SELECT w FROM Weather w WHERE w.town = :town")
     List<Weather> findByTown(String town);
 }

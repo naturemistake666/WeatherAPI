@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Weather</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data</title>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>id</th>
-            <th>cityName</th>
-            <th>date</th>
-            <th>temperatureNow</th>
-            <th>temperatureMin</th>
-            <th>city.temperatureMax</th>
-            <th>pressure</th>
-            <th>windSpeed</th>
-            <th>humidity</th>
-        </tr>
-        <tr>
-            <td th:utext="${weather.id}"></td>
-            <td th:utext="${weather.town}"></td>
-            <td th:utext="${weather.date}"></td>
-            <td th:utext="${weather.temperatureNow}"></td>
-            <td th:utext="${weather.temperatureMin}"></td>
-            <td th:utext="${weather.temperatureMax}"></td>
-            <td th:utext="${weather.pressure}"></td>
-            <td th:utext="${weather.windSpeed}"></td>
-            <td th:utext="${weather.humidity}"></td>
-        </tr>
-    </table>
+
+<h1>Weather Information</h1>
+
+<table border="1">
+    <tr>
+
+        <th>Town</th>
+        <th>Date</th>
+        <th>Temperature Now</th>
+        <th>Temperature Min</th>
+        <th>Temperature Max</th>
+        <th>Pressure</th>
+        <th>Humidity</th>
+        <th>Wind Speed</th>
+        <th>Temperature Feels</th>
+    </tr>
+
+    <!-- Используйте Thymeleaf-выражения для отображения данных -->
+    <tr>
+
+        <td th:text="${weather.town}"></td>
+        <td th:text="${weather.date}"></td>
+        <td th:text="${weather.temperatureNow}"></td>
+        <td th:text="${weather.temperatureMin}"></td>
+        <td th:text="${weather.temperatureMax}"></td>
+        <td th:text="${weather.pressure}"></td>
+        <td th:text="${weather.humidity}"></td>
+        <td th:text="${weather.windSpeed}"></td>
+        <td th:text="${weather.temperatureFeels}"></td>
+    </tr>
+
+</table>
 
 </body>
 </html>

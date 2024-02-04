@@ -22,7 +22,7 @@ public class WeatherConverter {
 
     public int convertTemperatureFeels(JSONObject littleJSONObj){
         return convertToOurTemperature(littleJSONObj
-                .getJSONObject("main").getDouble("feels_like"));
+                .getJSONObject("main").getInt("feels_like"));
     }
 
     public int convertMinTemperature(JSONObject bigJSONObj, int startIndex){
@@ -38,8 +38,8 @@ public class WeatherConverter {
                 .getJSONObject("main").getDouble("pressure"));
     }
 
-    public double convertWindSpeed(JSONObject littleJSONObj){
-        return littleJSONObj.getJSONObject("wind").getDouble("speed");
+    public float convertWindSpeed(JSONObject littleJSONObj){
+        return littleJSONObj.getJSONObject("wind").getFloat("speed");
     }
 
     public int convertHumidity(JSONObject littleJSONObj){

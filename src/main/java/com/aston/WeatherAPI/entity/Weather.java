@@ -5,42 +5,45 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "weather")
+@Table(name = "weather", schema = "weatherapi")
 public class Weather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
-    @Column(name = "town")
+    @Column(name = "town", nullable = false)
     private String town;
 
-    @Column(name = "date_")
+    @Column(name = "date_", nullable = false)
     private String date;
 
-    @Column(name = "temperature_now")
+    @Column(name = "temperature_now", nullable = false)
     private int temperatureNow;
 
-    @Column(name = "temperature_min")
+    @Column(name = "temperature_min", nullable = false)
     private int temperatureMin;
 
-    @Column(name = "temperature_max")
+    @Column(name = "temperature_max", nullable = false)
     private int temperatureMax;
 
-    @Column(name = "pressure")
+    @Column(name = "pressure", nullable = false)
     private int pressure;
 
     @Column(name = "humidity")
     private int humidity;
 
-    @Column(name = "wind_speed")
+    @Column(name = "wind_speed", nullable = false)
     private double windSpeed;
-    @Column(name = "temperature_feels")
+
+    @Column(name = "temperature_feels", nullable = false)
     private int temperatureFeels;
 
     public Weather(String town, String date, int temperatureNow,
@@ -56,10 +59,5 @@ public class Weather {
         this.pressure = pressure;
         this.windSpeed = windSpeed;
         this.humidity = humidity;
-    }
-
-    @Override
-    public String toString(){
-        return "Погода в " + town + " " + temperatureNow + " градусов";
     }
 }
