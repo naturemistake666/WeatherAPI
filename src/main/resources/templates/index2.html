@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +7,39 @@
         <title>Weather App - Display</title>
     </head>
     <body>
-        <div class="container">
-            <h1>Weather Information</h1>
-            <ul>
-                <li><strong>City:</strong> <span th:text="${weather.city}"></span></li>
-                <li><strong>Date:</strong> <span th:text="${weather.date}"></span></li>
-                <li><strong>Temperature:</strong> <span th:text="${weather.temperature}"></span></li>
-                <li><strong>Feels Like:</strong> <span th:text="${weather.feelsLike}"></span></li>
-                <li><strong>Min Temperature:</strong> <span th:text="${weather.minTemperature}"></span></li>
-                <li><strong>Max Temperature:</strong> <span th:text="${weather.maxTemperature}"></span></li>
-                <li><strong>Pressure:</strong> <span th:text="${weather.pressure}"></span></li>
-                <li><strong>Wind Speed:</strong> <span th:text="${weather.windSpeed}"></span></li>
-                <li><strong>Humidity:</strong> <span th:text="${weather.humidity}"></span></li>
-            </ul>
+    <div th:switch="${weathers}">
+        <h2 th:case="null">No users found</h2>
+        <div th:case="*">
+            <h2>Weathers</h2>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Town</th>
+                    <th>Date</th>
+                    <th>Temperature Now</th>
+                    <th>Temperature Min</th>
+                    <th>Temperature Max</th>
+                    <th>Pressure</th>
+                    <th>Humidity</th>
+                    <th>Wind Speed</th>
+                    <th>Temperature Feels</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="weather : ${weathers}">
+                    <td th:text="${weather.town}"></td>
+                    <td th:text="${weather.date}"></td>
+                    <td th:text="${weather.temperatureNow}"></td>
+                    <td th:text="${weather.temperatureMin}"></td>
+                    <td th:text="${weather.temperatureMax}"></td>
+                    <td th:text="${weather.pressure}"></td>
+                    <td th:text="${weather.humidity}"></td>
+                    <td th:text="${weather.windSpeed}"></td>
+                    <td th:text="${weather.temperatureFeels}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
     </body>
 </html>
